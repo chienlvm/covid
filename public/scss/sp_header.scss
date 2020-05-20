@@ -1,0 +1,28 @@
+.kqxs {
+
+
+
+  &_header {
+    height: 44px;
+    background: #fff;
+    border-bottom: 1px solid #e7e7e7;
+    display: flex;
+    align-items: center;
+  }
+  &_controlMenu {
+    margin-left: 10px;
+  }
+
+  &_logo {
+    margin: 7px auto;
+    width: 160px;
+    display: block;
+  }
+
+  &_img {
+    border: 0;
+    font-size: 0;
+    line-height: 0;
+    max-width: 100%;
+  }
+}

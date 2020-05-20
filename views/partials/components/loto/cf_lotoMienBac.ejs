@@ -1,0 +1,94 @@
+<table class="tableFix lotoMienTrung">
+  <tbody>
+<% if (ketQuaLotoMienBac.length > 0) { %>
+  <tr>
+    <td class="lotoMienTrung_title">Đầu</td>
+    <% ketQuaLotoMienBac.forEach(item => { %>
+      <td class="lotoMienTrung_name">
+      <a href="/ket-qua-xo-so/<%-item.ten_dai_sort%>"><%- item.ten_dai_offical %> </a>
+      </td>
+    <% }) %>
+  </tr>
+  <tr>
+    <td class="text text-center">0</td>
+    <% ketQuaLotoMienBac.forEach(item => { %>
+      <td class="text text-red text-left">
+        <%- (item.loto_0) %>
+      </td>
+    <% }) %>
+  </tr>
+  <tr>
+    <td class="text text-center">1</td>
+    <% ketQuaLotoMienBac.forEach(item => { %>
+      <td class="text text-red text-left">
+        <%- (item.loto_1) %>
+      </td>
+    <% }) %>
+  </tr>
+  <tr>
+    <td class="text text-center">2</td>
+    <% ketQuaLotoMienBac.forEach(item => { %>
+      <td class="text text-red text-left">
+        <%- (item.loto_2) %>
+      </td>
+    <% }) %>
+  </tr>
+  <tr>
+    <td class="text text-center">3</td>
+    <% ketQuaLotoMienBac.forEach(item => { %>
+      <td class="text text-red text-left">
+        <%- (item.loto_3) %>
+      </td>
+    <% }) %>
+  </tr>
+  <tr>
+    <td class="text text-center">4</td>
+    <% ketQuaLotoMienBac.forEach(item => { %>
+      <td class="text text-red text-left">
+        <%- (item.loto_4) %>
+      </td>
+    <% }) %>
+  </tr>
+  <tr>
+    <td class="text text-center">5</td>
+    <% ketQuaLotoMienBac.forEach(item => { %>
+      <td class="text text-red text-left">
+        <%- (item.loto_5) %>
+      </td>
+    <% }) %>
+  </tr>
+  <tr>
+    <td class="text text-center">6</td>
+    <% ketQuaLotoMienBac.forEach(item => { %>
+      <td class="text text-red text-left">
+        <%- (item.loto_6) %>
+      </td>
+    <% }) %>
+  </tr>
+  <tr>
+    <td class="text text-center">7</td>
+    <% ketQuaLotoMienBac.forEach(item => { %>
+      <td class="text text-red text-left">
+        <%- (item.loto_7) %>
+      </td>
+    <% }) %>
+  </tr>
+  <tr>
+    <td class="text text-center">8</td>
+    <% ketQuaLotoMienBac.forEach(item => { %>
+      <td class="text text-red text-left">
+        <%- (item.loto_8) %>
+      </td>
+    <% }) %>
+  </tr>
+  <tr>
+    <td class="text text-center">9</td>
+    <% ketQuaLotoMienBac.forEach(item => { %>
+      <td class="text text-red text-left">
+        <%- (item.loto_9) %>
+      </td>
+    <% }) %>
+  </tr>
+<% } %>
+  </tbody>
+</table>

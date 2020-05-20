@@ -1,0 +1,285 @@
+@import './reset.scss';
+@import './sp_header.scss';
+@import './sp_breakcrum.scss';
+@import './minix.scss';
+
+// import component
+@import './components/sp_link.scss';
+@import './components/sp_infoLottery.scss';
+@import './components/cf_breakscrum.scss';
+
+
+
+@import './sp_layout.scss';
+@import './sp_footer.scss';
+
+// css for main layout
+.is-mobile {
+  &::after {
+      content: "";
+      display: table;
+      clear: both;
+  }
+}
+.kqxs_main {
+  width: 100%;
+  float: left;
+  position: relative;
+}
+
+.kqxs {
+
+  &_result {
+    display: table;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 1px solid;
+    width: 100%;
+
+    & tr:not(:last-child) {
+      border-bottom: 1px solid #E5E5E5;
+    }
+
+  }
+
+  &_loto {
+    margin-top: 10px;
+  }
+
+  &_kqArea {
+    margin-top: 10px;
+  }
+
+  &_lichMoThuong {
+    margin-top: 10px;
+  }
+}
+.kq {
+  &_title {
+    font-weight: bold;
+    padding: 10px 0;
+    font-size: 15px;
+    text-align: center;
+  }
+  &_banner {
+    border-top: 1px solid #e7e7e7;
+    background-color: #eaeaea;
+    color: #9d234c;
+    font-size: 16px;
+  }
+  &_loto {
+    margin-top: 10px;
+  }
+}
+
+.result {
+  &_detail {
+    border-right: 1px solid #E5E5E5;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  &_number {
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+.lotoMienTrung {
+  color: #900;
+
+  text-align: center;
+
+  &_title {
+    background-color: #e8e8e8;
+    border-top: 1px solid #E5E5E5;
+    width: 15%;
+  }
+  &_name {
+    background-color: #e8e8e8;
+  }
+  & th {
+    border: 1px solid #ddd;
+  }
+  & td {
+    border: 1px solid #ddd;
+    font-size: 13px;
+  }
+}
+
+.lichMoThuong {
+  &_title {
+    font-size: 20px;
+    background-color: #efefef;
+  }
+  &_text {
+    padding: 20px;
+    text-align: center;
+    color: #9d234c;;
+  }
+  &_mien {
+    color: #e80000;
+    padding: 10px 5px;
+    width: 100px;
+    font-size: 13px;
+    text-align: center;
+    vertical-align: middle;
+    border-right: 1px solid #ccc;
+  }
+  &_dsDai {
+    border-bottom: 1px solid #ccc;
+
+    &:last-child {
+      border-bottom: none
+    }
+  }
+
+  &_tenDai {
+    text-align: center;
+    vertical-align: middle;
+    color: #087cce;
+    font-size: 14px;
+    &:not(:last-child) {
+      border-right: 1px solid #ccc;
+    }
+  }
+}
+
+.tbKq {
+  &_title {
+    width: 50px;
+    &-7 {
+      color: #e80000;
+    }
+    &-db {
+      color: #e80000;
+      font-size: 16px;
+    }
+  }
+  &_number {
+    font-weight: bold;
+    &-db {
+      color: #e80000;
+      font-size: 18px;
+    }
+  }
+
+  &_row {
+    border-bottom: 1px solid #ccc;
+
+    &:first-child {
+      border-top: 1px solid #ccc;
+    }
+    &:nth-child(2n) {
+      background-color: #efefef;;
+    }
+
+    & td {
+      border-left: 1px solid #ccc;
+      padding: 5px;
+      text-align: center;
+      vertical-align: middle;
+
+      &:last-child {
+        border-right: 1px solid #ccc;
+      }
+    }
+  }
+}
+.loto {
+  &_title {
+    border-top: 1px solid #e7e7e7;
+    background-color: #eaeaea;
+    color: #9d234c;
+    font-size: 16px;
+  }
+
+  &_text {
+    padding: 5px;
+    font-size: 13px;
+  }
+}
+
+.danhSachDai {
+  float: left;
+  width: 100%;
+  margin-top: 10px;
+
+  &_title {
+    border-top: 1px solid #e7e7e7;
+    background-color: #eaeaea;
+    color: #9d234c;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  &_text {
+    padding: 10px;
+    text-align: center;
+    color: #9d234c;
+  }
+
+  &_list {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+  }
+  &_item {
+    display: flex;
+    &:first-child {
+      margin-top: 10px;
+      padding-top: 10px;
+    }
+
+    &:nth-child(2n+3) {
+      border-top: 1px solid #ccc;
+      margin-top: 10px;
+      padding-top: 10px;
+    }
+  }
+
+  &_subsList {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+  &_subsItem {
+    display: flex;
+
+    &:not(:first-child) {
+      margin-top: 10px;
+    }
+  }
+
+  &_thu {
+    width: 90px;
+    flex-shrink: 0;
+    font-size: 13px;
+  }
+
+  &_list {
+    display: flex;
+  }
+  &_listLink {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+  }
+
+  &_link {
+    font-size: 10px;
+    margin-left: 10px;
+    padding-left: 10px;
+    background: url("../icon/icon_arrow_01.gif") no-repeat left 5px;
+
+    &:not(:last-child) {
+      width: 45%;
+    }
+
+    &:nth-child(n+3) {
+      margin-top: 10px;
+    }
+  }
+}

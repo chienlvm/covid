@@ -1,0 +1,50 @@
+<div class="danhSachDai">
+  <div class="danhSachDai_title">
+    <h4 class="danhSachDai_text">
+      Lịch quay xổ số các ngày trong tuần
+    </h4>
+  </div>
+  <ul class="danhSachDai_list">
+
+    <% LICH_MO_THUONG.forEach(item => { %>
+      <li class="danhSachDai_item">
+        <span><%= item.thu %> </span>
+      </li>
+      <li class="danhSachDai_item">
+        <ul class="danhSachDai_subsList">
+          <li class="danhSachDai_subsItem">
+            <span class="danhSachDai_thu">
+              Miền Bắc:
+            </span>
+            <div class="danhSachDai_listLink">
+              <% item.mienBac.forEach(mien => { %>
+                <a class="danhSachDai_link" href="/ket-qua-xo-so/<%= mien.nameAbrige %>"><%= mien.nameOffical %> </a>
+              <% }) %>
+            </div>
+          </li>
+          <li class="danhSachDai_subsItem">
+            <span class="danhSachDai_thu">
+              Miền Trung:
+            </span>
+            <div class="danhSachDai_listLink">
+              <% item.mienTrung.forEach(mien => { %>
+                <a class="danhSachDai_link" href="/ket-qua-xo-so/<%= mien.nameAbrige %>"><%= mien.nameOffical %> </a>
+              <% }) %>
+            </div>
+          </li>
+          <li class="danhSachDai_subsItem">
+            <span class="danhSachDai_thu">
+              Miền Nam:
+            </span>
+            <div class="danhSachDai_listLink">
+              <% item.mienNam.forEach(mien => { %>
+                <a class="danhSachDai_link" href="/ket-qua-xo-so/<%= mien.nameAbrige %>"><%= mien.nameOffical %> </a>
+              <% }) %>
+            </div>
+          </li>
+        </ul>
+      </li>
+    <% }) %>
+  </ul>
+
+</div>

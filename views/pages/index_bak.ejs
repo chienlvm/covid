@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head.ejs') -%>
+  </head>
+
+  <body class="container is-mobile">
+    <div class="kqxs_header">
+      <%- include('../partials/header')-%>
+    </div>
+    <!-- giữa nguyên menu. move data cho breakcrum-->
+    <%- include('../partials/sp_breakcrum', {data: dataBreakcrum})-%>
+    <!--breackcrum-->
+    <%- include('../partials/components/cf_brackScrum', {data: dataBreakcrum})-%>
+    <!-- main-->
+    <div class="kqxs_main">
+      <!-- ket qua xo so hôm nay-->
+      <div class="kqxs_lichMoThuong">
+        <div class="lichMoThuong_title">
+          <h4 class="lichMoThuong_text">
+            Kết quả xổ số 3 miền hôm nay
+            <br>
+            Ngày: 2-2-2020
+          </h4>
+        </div>
+        <table class="tableFix lichMoThuong">
+          <tbody>
+            <tr class="lichMoThuong_dsDai">
+              <td class="lichMoThuong_mien">
+                Miền Bắc
+              </td>
+              <td class="lichMoThuong_tenDai">
+                Hà Nội
+              </td>
+              <td class="lichMoThuong_tenDai">
+                Hải Phòng
+              </td>
+              <td class="lichMoThuong_tenDai"></td>
+            </tr>
+            <tr class="lichMoThuong_dsDai">
+              <td class="lichMoThuong_mien">
+                Miền Trung
+              </td>
+              <td class="lichMoThuong_tenDai">
+                Huế
+              </td>
+              <td class="lichMoThuong_tenDai">
+                Phú Yên
+              </td>
+              <td class="lichMoThuong_tenDai">Đà Nẵng</td>
+            </tr>
+            <tr class="lichMoThuong_dsDai">
+              <td class="lichMoThuong_mien">
+                Miền Nam
+              </td>
+              <td class="lichMoThuong_tenDai">
+                Đà lạt
+              </td>
+              <td class="lichMoThuong_tenDai">
+                Kiên Giang
+              </td>
+              <td class="lichMoThuong_tenDai"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <!-- list theo miền-->
+        <div class="kqxs_kqArea">
+          <div class="kq_banner">
+            <h4 class="kq_title">
+              Kết quả xổ số miền bắc ngày: <span class="is-date">1-1-2020</span>
+            </h4>
+          </div>
+          <div class="kq_kq">
+            <!-- INFOR-->
+            <%- include('../partials/components/cf_mienBac') %>
+          </div>
+          <!-- QUang caso-->
+          <div class="kq_loto">
+            <div class="loto_title">
+              <h4 class="loto_text">Bảng loto miền bắc: Ngày 2-2-2020</h4>
+            </div>
+            <%- include('../partials/components/cf_lotoMienBac')-%>
+          </div>
+        </div>
+      </div>
+      <div>
+        <!-- list theo miền-->
+        <div class="kqxs_kqArea">
+          <div class="kq_banner">
+            <h4 class="kq_title">
+              Kết quả xổ số miền trung ngày: <span class="is-date">1-1-2020</span>
+            </h4>
+          </div>
+          <div class="kq_kq">
+            <!-- INFOR-->
+            <%- include('../partials/components/cf_mienBac') %>
+          </div>
+          <!-- QUang caso-->
+          <div class="kq_loto">
+            <div class="loto_title">
+              <h4 class="loto_text">Bảng loto miền trung: Ngày 2-2-2020</h4>
+            </div>
+            <%- include('../partials/components/cf_lotoMienBac')-%>
+          </div>
+        </div>
+      </div>
+      <div>
+        <!-- list theo miền-->
+        <div class="kqxs_kqArea">
+          <div class="kq_banner">
+            <h4 class="kq_title">
+              Kết quả xổ số miền nam ngày: <span class="is-date">1-1-2020</span>
+            </h4>
+          </div>
+          <div class="kq_kq">
+            <!-- INFOR-->
+            <%- include('../partials/components/cf_mienBac') %>
+          </div>
+          <!-- QUang caso-->
+          <div class="kq_loto">
+            <div class="loto_title">
+              <h4 class="loto_text">Bảng loto miền nam: Ngày 2-2-2020</h4>
+            </div>
+            <%- include('../partials/components/cf_lotoMienBac')-%>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('../partials/content/sp_infoLottery') -%>
+    <!-- footer-->
+    <%- include('../partials/content/sp_link') -%> <%-
+    include('../partials/footer') -%>
+  </body>
+</html>

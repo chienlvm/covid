@@ -1,0 +1,41 @@
+.kqxs_link {
+  margin-top: 10px;
+  width: 100%;
+  float: left;
+}
+.link {
+
+  &_title {
+    border-top: 1px solid #e7e7e7;
+    background-color: #eaeaea;
+    padding: 5px;
+  }
+
+  &_txt {
+    color: #9d234c;
+    font-size: 16px;
+  }
+
+  &_list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_item {
+    border-top: 1px solid #e7e7e7;
+    font-size: 13px;
+    padding: 5px 0 5px 15px;
+    position: relative;
+
+    &::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      position: absolute;
+      left: 5px;
+      top: 10px;
+      background: #4F4F4F;
+      border-radius: 50%;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.kqxs {
+  &_breakScrum {
+    float: left;
+    margin-top: 10px;
+  }
+}
+
+.breakScrum {
+  &_list {
+    display: flex;
+    align-items: center;
+  }
+  &_item:not(:last-child) {
+    padding-right: 10px;
+    color: #9f224e;
+  }
+}
+
+.is-current {
+  color: #222222;
+}

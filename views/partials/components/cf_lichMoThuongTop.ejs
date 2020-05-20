@@ -1,0 +1,77 @@
+<div class="kqxs_lichMoThuong">
+  <div class="lichMoThuong_title">
+    <h4 class="lichMoThuong_text">
+      Kết quả xổ số 3 miền hôm nay
+      <br />
+        <%- lichMoThuong.thu %> Ngày:  <%- cur_date %>
+    </h4>
+  </div>
+  <table class="tableFix lichMoThuong">
+    <tbody>
+      <tr class="lichMoThuong_dsDai">
+        <td class="lichMoThuong_mien">
+          Miền Bắc
+        </td>
+        <% const maxLength = Math.max(lichMoThuong.mienBac.length, lichMoThuong.mienTrung.length, lichMoThuong.mienNam.length) %>
+        <% if (maxLength === lichMoThuong.mienBac.length) { %>
+          <% lichMoThuong.mienBac.forEach(item => { %>
+            <td class="lichMoThuong_tenDai">
+              <a href="/ket-qua-xo-so/mien-bac/<%- item.nameAbrige %>"> <%- item.nameOffical%></a>
+            </td>
+          <% }) %>
+        <% } else { %>
+          <% lichMoThuong.mienBac.forEach(item => { %>
+            <td class="lichMoThuong_tenDai">
+              <a href="/ket-qua-xo-so/mien-bac/<%- item.nameAbrige %>"> <%- item.nameOffical%></a>
+            </td>
+          <% }) %>
+          <% for(let i = 0; i < (maxLength - lichMoThuong.mienBac.length); i++ ) { %>
+            <td class="lichMoThuong_tenDai"></td>
+          <% } %>
+        <% }%>
+      </tr>
+      <tr class="lichMoThuong_dsDai">
+        <td class="lichMoThuong_mien">
+          Miền Trung
+        </td>
+        <% if (maxLength === lichMoThuong.mienTrung.length) { %>
+          <% lichMoThuong.mienTrung.forEach(item => { %>
+            <td class="lichMoThuong_tenDai">
+              <a href="/ket-qua-xo-so/mien-bac/<%- item.nameAbrige %>"> <%- item.nameOffical%></a>
+            </td>
+          <% }) %>
+        <% } else { %>
+          <% lichMoThuong.mienTrung.forEach(item => { %>
+            <td class="lichMoThuong_tenDai">
+              <a href="/ket-qua-xo-so/mien-bac/<%- item.nameAbrige %>"> <%- item.nameOffical%></a>
+            </td>
+          <% }) %>
+          <% for(let i = 0; i < (maxLength - lichMoThuong.mienTrung.length); i++ ) { %>
+            <td class="lichMoThuong_tenDai"></td>
+          <% } %>
+        <% }%>
+      </tr>
+      <tr class="lichMoThuong_dsDai">
+        <td class="lichMoThuong_mien">
+          Miền Nam
+        </td>
+        <% if (maxLength === lichMoThuong.mienNam.length) { %>
+          <% lichMoThuong.mienNam.forEach(item => { %>
+            <td class="lichMoThuong_tenDai">
+              <a href="/ket-qua-xo-so/mien-bac/<%- item.nameAbrige %>"> <%- item.nameOffical%></a>
+            </td>
+          <% }) %>
+        <% } else { %>
+          <% lichMoThuong.mienNam.forEach(item => { %>
+            <td class="lichMoThuong_tenDai">
+              <a href="/ket-qua-xo-so/mien-bac/<%- item.nameAbrige %>"> <%- item.nameOffical%></a>
+            </td>
+          <% }) %>
+          <% for(let i = 0; i < (maxLength - lichMoThuong.mienNam.length); i++ ) { %>
+            <td class="lichMoThuong_tenDai"></td>
+          <% } %>
+        <% }%>
+      </tr>
+    </tbody>
+  </table>
+</div>

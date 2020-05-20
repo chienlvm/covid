@@ -1,0 +1,51 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en"  xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>COVID-19 Form</title>
+<link rel="stylesheet" type="text/css" href="/static/css/view.css" media="all" />
+<link rel="stylesheet" type="text/css" href="/static/css/view.mobile.css" media="all" />
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+</head>
+<body id="main_body">
+	<div id="form_container" class="">
+
+		<h1><a>Covid-19 form</a></h1>
+
+		<div class="form_input">
+      <form action="/action_page" method="POST">
+        <label for="fullname">Full name:</label><br>
+        <input type="text" id="fullname" name="fullname" placeholder="............."><br>
+
+        <div class="form_describe">
+          <div>
+            <h2>What is Lorem Ipsum?</h2>
+            <p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+        </div>
+        <div class="form_email">
+          <label for="email">Email</label><br>
+          <input type="email" id="email" name="email">
+        </div>
+        <div class="form_signature">
+          <p>signature</p>
+          <div>
+            <canvas id="signature" width="300" height="100"></canvas>
+          </div>
+          <div>
+            <input type="hidden" name="signature" />
+          </div>
+        </div>
+        <label for="lname">Last name:</label><br>
+        <input type="submit" value="Submit">
+      </form>
+		</div>
+		<div id="footer" class="success">
+
+		</div>
+  </div>
+  <script src="/static/js/index.js"></script>
+</body>
+</html>

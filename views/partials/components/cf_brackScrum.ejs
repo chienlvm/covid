@@ -1,0 +1,23 @@
+<div class="kqxs_breakScrum">
+  <ul class="breakScrum_list">
+    <% data.forEach(function(item){ %> <% if(item.type !== 'TOP') { %>
+    <% var length = item.data.length; %>
+    <% item.data.forEach((dataItem, index) => { %>
+    <li class="breakScrum_item">
+      <h4>
+
+        <% if (length === index+1) {%>
+          <span class="breakScrum_link is-current"><%- `${dataItem.nameOffical}` %></span>
+        <%} else {%>
+          <a class="breakScrum_link <%-length === index+1 ? "is-current" : ""%>"
+            href="<%- `${dataItem.url}` %>" title="<%- `${dataItem.url}`%>"
+            ><%- `${dataItem.nameOffical}` %></a
+          >
+          &nbsp; | &nbsp;
+          <% } %>
+      </h4>
+    </li>
+    <% }) %> <% } %>
+    <% }); %>
+  </ul>
+</div>

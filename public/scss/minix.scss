@@ -1,0 +1,97 @@
+.ic {
+  width: 14px;
+  height: 14px;
+  background: url("../icon/icon_vne.svg") no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+
+
+  &-menu {
+    width: 18px;
+    height: 12px;
+    background-position: -18px -195px;
+  }
+}
+
+.img {
+  order: 0;
+    font-size: 0;
+    line-height: 0;
+    max-width: 100%;
+}
+
+.text {
+  color: #383838;
+  font-size: 16px;
+
+  &-center {
+    text-align: center;
+  }
+  &-left {
+    text-align: left;
+  }
+
+  &-red {
+    color: red;
+  }
+}
+.tbKq {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+
+
+  &_listKq {
+    border-bottom: 1px solid #ccc;
+
+    &:first-child {
+      border-top: 1px solid #ccc;
+    }
+    &:nth-child(2n) {
+      background: #efefef;
+    }
+  }
+
+  &_giai {
+    border-left: 1px solid #ccc;
+    width: 100px;
+    padding: 8px 5px;
+    text-align: center;
+    vertical-align: middle;
+
+
+    &-7 {
+      color: #e80000;
+    }
+    &-db {
+      color: #e80000;
+      font-size: 16px;
+    }
+  }
+  &_ketQua {
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    text-align: center;
+    font-weight: bold;
+    vertical-align: middle;
+    padding: 8px 5px;
+    font-size: 17px;
+    &-db {
+      color: #e80000;
+      font-size: 20px;
+    }
+  }
+}
+
+.is-date {
+  color: #385898;
+  font-style: italic;
+}
+.tableFix {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  box-shadow: 0 1px 4px 0 rgba(102,98,98,0.4);
+}

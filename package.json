@@ -1,0 +1,39 @@
+{
+  "name": "chienlvm",
+  "version": "1.0.0",
+  "description": "full source",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./bin/www --exec babel-node",
+    "dev": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "axios": "^0.19.2",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^8.1.0",
+    "babel-preset-env": "^1.7.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "ejs": "^3.1.2",
+    "ejs-lint": "^1.0.1",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "expressjs": "^1.0.1",
+    "http": "0.0.1-security",
+    "lodash": "^4.17.15",
+    "morgan": "^1.10.0",
+    "node-sass": "^4.13.1",
+    "node-sass-middleware": "^0.11.0",
+    "nodemailer": "^6.4.6",
+    "puppeteer": "^3.1.0",
+    "qs": "^6.9.2",
+    "random-useragent": "^0.3.1",
+    "signature_pad": "^3.0.0-beta.3"
+  }
+}

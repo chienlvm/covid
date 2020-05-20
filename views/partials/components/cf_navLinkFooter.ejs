@@ -1,0 +1,51 @@
+<div class="kqxs_link">
+  <div class="link_title">
+    <span class="link_txt">
+      Kết quả xổ số Miền Bắc
+    </span>
+  </div>
+
+  <ul class="link_list">
+    <% CONST_ENUM_DAI.forEach(item => { %>
+      <% if (item.id <= 6) { %>
+        <li class="link_item">
+          <a href="/ket-qua-xo-so/ <%= item.nameAbrige %> ">Xổ số <%= item.nameOffical %> </a>
+        </li>
+      <% } %>
+    <% }) %>
+  </ul>
+</div>
+<div class="kqxs_link">
+  <div class="link_title">
+    <span class="link_txt">
+      Kết quả xổ số Miền Trung
+    </span>
+  </div>
+
+  <ul class="link_list">
+    <% CONST_ENUM_DAI.forEach(item => { %>
+      <% if (item.id > 6 && item.id <= 20) { %>
+        <li class="link_item">
+          <a href="/ket-qua-xo-so/ <%= item.nameAbrige %> ">Xổ số <%= item.nameOffical %> </a>
+        </li>
+      <% } %>
+    <% }) %>
+  </ul>
+</div>
+<div class="kqxs_link">
+  <div class="link_title">
+    <span class="link_txt">
+      Kết quả xổ số Miền Nam
+    </span>
+  </div>
+
+  <ul class="link_list">
+    <% CONST_ENUM_DAI.forEach(item => { %>
+      <% if (item.id > 20) { %>
+        <li class="link_item">
+          <a href="/ket-qua-xo-so/ <%= item.nameAbrige %> ">Xổ số <%= item.nameOffical %> </a>
+        </li>
+      <% } %>
+    <% }) %>
+  </ul>
+</div>

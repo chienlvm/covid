@@ -1,0 +1,214 @@
+<%
+const filterDataSpecial = (data) => {
+  return data.split(' - ').join('<br/>');
+}
+%>
+<table class="tableFix tbKq_mienBac">
+  <tbody>
+
+    <% if (ketQuaMienNam.length > 0) {%>
+      <tr class="tbKq_row">
+        <td class="tbKq_title">
+          Giải
+        </td>
+        <% ketQuaMienNam.forEach(item => { %>
+          <td class="tbKq_number tbKq_number--tenDai">
+            <a href="/ket-qua-xo-so/<%-item.ten_dai_sort%>"><%- item.ten_dai_offical %> </a>
+          </td>
+        <% }) %>
+      </tr>
+      <tr class="tbKq_row">
+        <td class="tbKq_title">
+          8
+        </td>
+        <% ketQuaMienNam.forEach(item => { %>
+          <td class="tbKq_number">
+            <%- filterDataSpecial(item.giai_8) %>
+          </td>
+        <% }) %>
+      </tr>
+      <tr class="tbKq_row">
+        <td class="tbKq_title">
+          7
+        </td>
+        <% ketQuaMienNam.forEach(item => { %>
+          <td class="tbKq_number">
+            <%- filterDataSpecial(item.giai_7) %>
+          </td>
+        <% }) %>
+      </tr>
+      <tr class="tbKq_row">
+        <td class="tbKq_title">
+          6
+        </td>
+        <% ketQuaMienNam.forEach(item => { %>
+          <td class="tbKq_number">
+            <%- filterDataSpecial(item.giai_6) %>
+          </td>
+        <% }) %>
+      </tr>
+      <tr class="tbKq_row">
+        <td class="tbKq_title">
+          5
+        </td>
+        <% ketQuaMienNam.forEach(item => { %>
+          <td class="tbKq_number">
+            <%- filterDataSpecial(item.giai_5) %>
+          </td>
+        <% }) %>
+      </tr>
+      <tr class="tbKq_row">
+        <td class="tbKq_title">
+          4
+        </td>
+        <% ketQuaMienNam.forEach(item => { %>
+          <td class="tbKq_number">
+            <%- filterDataSpecial(item.giai_4) %>
+          </td>
+        <% }) %>
+      </tr>
+      <tr class="tbKq_row">
+        <td class="tbKq_title">
+          3
+        </td>
+        <% ketQuaMienNam.forEach(item => { %>
+          <td class="tbKq_number">
+            <%- filterDataSpecial(item.giai_3) %>
+          </td>
+        <% }) %>
+      </tr>
+      <tr class="tbKq_row">
+        <td class="tbKq_title">
+          2
+        </td>
+        <% ketQuaMienNam.forEach(item => { %>
+          <td class="tbKq_number">
+            <%- filterDataSpecial(item.giai_2) %>
+          </td>
+        <% }) %>
+      </tr>
+      <tr class="tbKq_row">
+        <td class="tbKq_title">
+          1
+        </td>
+        <% ketQuaMienNam.forEach(item => { %>
+          <td class="tbKq_number">
+            <%- filterDataSpecial(item.giai_1) %>
+          </td>
+        <% }) %>
+      </tr>
+      <tr class="tbKq_row">
+        <td class="tbKq_title tbKq_title-db">
+          DB
+        </td>
+        <% ketQuaMienNam.forEach(item => { %>
+          <td class="tbKq_number tbKq_number-db">
+            <%- item.giai_db %>
+          </td>
+        <% }) %>
+      </tr>
+
+    <% } else { %>
+      <tr class="tbKq_row">
+        <td class="tbKq_title">
+          Giải
+        </td>
+        <% ketQuaMienNam.forEach(item => { %>
+          <td class="tbKq_number tbKq_number--tenDai">
+            <a href="/ket-qua-xo-so/<%-item.ten_dai_sort%>"><%- item.ten_dai_offical %> </a>
+          </td>
+        <% }) %>
+      </tr>
+      <tr class="tbKq_row">
+        <td class="tbKq_title">
+          8
+        </td>
+        <% ketQuaMienNam.forEach(item => { %>
+          <td class="tbKq_number">
+            <%- item.giai_8 %>
+          </td>
+        <% }) %>
+      </tr>
+      <tr class="tbKq_row">
+        <td class="tbKq_title">
+          7
+        </td>
+        <% ketQuaMienNam.forEach(item => { %>
+          <td class="tbKq_number">
+            <%- item.giai_7 %>
+          </td>
+        <% }) %>
+      </tr>
+      <tr class="tbKq_row">
+        <td class="tbKq_title">
+          6
+        </td>
+        <% ketQuaMienNam.forEach(item => { %>
+          <td class="tbKq_number">
+            <%- filterDataSpecial(item.giai_6) %>
+          </td>
+        <% }) %>
+      </tr>
+      <tr class="tbKq_row">
+        <td class="tbKq_title">
+          5
+        </td>
+        <% ketQuaMienNam.forEach(item => { %>
+          <td class="tbKq_number">
+            <%- item.giai_5 %>
+          </td>
+        <% }) %>
+      </tr>
+      <tr class="tbKq_row">
+        <td class="tbKq_title">
+          4
+        </td>
+        <% ketQuaMienNam.forEach(item => { %>
+          <td class="tbKq_number">
+            <%- item.giai_4 %>
+          </td>
+        <% }) %>
+      </tr>
+      <tr class="tbKq_row">
+        <td class="tbKq_title">
+          3
+        </td>
+        <% ketQuaMienNam.forEach(item => { %>
+          <td class="tbKq_number">
+            <%- item.giai_3%>
+          </td>
+        <% }) %>
+      </tr>
+      <tr class="tbKq_row">
+        <td class="tbKq_title">
+          2
+        </td>
+        <% ketQuaMienNam.forEach(item => { %>
+          <td class="tbKq_number">
+            <%- item.giai_2 %>
+          </td>
+        <% }) %>
+      </tr>
+      <tr class="tbKq_row">
+        <td class="tbKq_title">
+          1
+        </td>
+        <% ketQuaMienNam.forEach(item => { %>
+          <td class="tbKq_number">
+            <%- item.giai_1 %>
+          </td>
+        <% }) %>
+      </tr>
+      <tr class="tbKq_row">
+        <td class="tbKq_title tbKq_title-db">
+          DB
+        </td>
+        <% ketQuaMienNam.forEach(item => { %>
+          <td class="tbKq_number tbKq_number-db">
+            <%- item.giai_db %>
+          </td>
+        <% }) %>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
