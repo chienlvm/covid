@@ -11,6 +11,15 @@ var cors = require('cors');
 const puppeteer = require('puppeteer');
 const path = require('path');
 
+// pdf
+const PDFDocument = require('pdfkit');
+const fs = require('fs');
+// base 64
+var base64 = require('base-64');
+
+
+
+// mail
 var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -23,28 +32,6 @@ var transporter = nodemailer.createTransport({
   },
 });
 
-const captureScreenshot = async () => {
-  const browser = await puppeteer.launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  });
-
-  const page = await browser.newPage();
-
-  await page.goto('http://localhost:9999/', { waitUntil: 'networkidle2' });
-  await page.pdf({
-    path: './viblo-asia.pdf',
-    format: 'A4',
-    landscape: true,
-    printBackground: true,
-    margin: {
-      top: '0',
-      right: '0',
-      bottom: '0',
-      left: '0',
-    },
-  });
-  await browser.close();
-};
 
 var myPrefix = '/static';
 var destination = join(__dirname, 'public');
@@ -77,16 +64,44 @@ app.use(cors());
 
 // live
 
+// for pdf
+const doc = new PDFDocument(
+  {
+    size: [300, 300],
+    margins : { // by default, all are 72
+      top: 10,
+      bottom:10,
+      left: 10,
+      right: 10
+    }
+  }
+);
+
 // for server side rendering
 // home
 app.get('/', function (req, res) {
   res.render('pages/index');
 });
-
+// submit
 app.post('/action_page', function (req, res) {
   var email = req.body.email;
   var fullName = req.body.fullname;
-  console.log(email, fullName);
+  var signature = req.body.signature;
+  var buffer = Buffer.from(signature.split(',')[1] || '', 'base64');
+  var date = new Date();
+  doc.pipe(fs.createWriteStream(`./data/form_${fullName}_${date.getFullYear()}-${date.getMonth() + 1}-${date.getDay()}_${date.getTime()}.pdf`));
+  doc
+    .font('./font/PALAT32.ttf')
+    .fontSize(14)
+    .text(`Thanks you ${fullName} has submitec`, 100, 100);
+
+  doc.image('./data/fff.png', {
+    fit: [250, 300],
+    align: 'center',
+    valign: 'center'
+  });
+  doc.image(buffer, 10, 10, {height: 75});
+  doc.end();
 
   //  captureScreenshot();
 
@@ -106,13 +121,13 @@ app.post('/action_page', function (req, res) {
     ],
   };
 
-  transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-  }
-  });
+  // transporter.sendMail(mailOptions, function(error, info){
+  // if (error) {
+  //   console.log(error);
+  // } else {
+  //   console.log('Email sent: ' + info.response);
+  // }
+  // });
   res.render('pages/success');
 });
 app.listen(port);
