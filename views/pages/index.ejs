@@ -19,7 +19,7 @@
 		<div class="form_input" id="form-submit">
       <form action="/action_page" method="POST">
         <label for="fullname">Full name:</label><br>
-        <input type="text" id="fullname" name="fullname" placeholder="............."><br>
+        <input required type="text" id="fullname" name="fullname" placeholder="............."><br>
 
         <div class="form_describe">
           <div>
@@ -29,15 +29,14 @@
         </div>
         <div class="form_email">
           <label for="email">Email</label><br>
-          <input type="email" id="email" name="email">
+          <input required type="email" id="email" name="email">
         </div>
         <div class="form_signature">
           <p>signature</p>
           <div class="wrapper">  <canvas id="signature-pad" class="signature-pad" width=370 height=200></canvas>
-            <input type="hidden" name="signature">
+            <input required type="hidden" name="signature">
           </div>
           <div>
-            <button id="save">Save</button>
             <button id="clear">Clear</button>
           </div>
         </div>

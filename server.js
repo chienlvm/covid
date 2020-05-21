@@ -10,6 +10,7 @@ var cors = require('cors');
 
 const puppeteer = require('puppeteer');
 const path = require('path');
+const home = require('./router/home');
 
 // pdf
 const PDFDocument = require('pdfkit');
@@ -17,7 +18,7 @@ const fs = require('fs');
 // base 64
 var base64 = require('base-64');
 
-
+var isSubmit = false;
 
 // mail
 var nodemailer = require('nodemailer');
@@ -64,7 +65,20 @@ app.use(cors());
 
 // live
 
-// for pdf
+
+// for server side rendering
+// home
+app.get('/', function (req, res) {
+  isSubmit = true;
+  res.render('pages/index');
+});
+// submit
+app.post('/action_page', function (req, res) {
+  var email = req.body.email;
+  var fullName = req.body.fullname;
+  var signature = req.body.signature;
+
+  // for pdf
 const doc = new PDFDocument(
   {
     size: [300, 300],
@@ -76,31 +90,20 @@ const doc = new PDFDocument(
     }
   }
 );
-
-// for server side rendering
-// home
-app.get('/', function (req, res) {
-  res.render('pages/index');
-});
-// submit
-app.post('/action_page', function (req, res) {
-  var email = req.body.email;
-  var fullName = req.body.fullname;
-  var signature = req.body.signature;
   var buffer = Buffer.from(signature.split(',')[1] || '', 'base64');
   var date = new Date();
+  var nameFile = `form_${fullName}_${date.getFullYear()}-${date.getMonth() + 1}-${date.getDay()}_${date.getTime()}.pdf`
   doc.pipe(fs.createWriteStream(`./data/form_${fullName}_${date.getFullYear()}-${date.getMonth() + 1}-${date.getDay()}_${date.getTime()}.pdf`));
   doc
     .font('./font/PALAT32.ttf')
     .fontSize(14)
-    .text(`Thanks you ${fullName} has submitec`, 100, 100);
+    .text(`Thanks you ${fullName} has submitec`, 10, 100);
 
-  doc.image('./data/fff.png', {
-    fit: [250, 300],
+  doc.image(buffer, 0, 100, {
+    fit: [100, 300],
     align: 'center',
     valign: 'center'
   });
-  doc.image(buffer, 10, 10, {height: 75});
   doc.end();
 
   //  captureScreenshot();
@@ -112,23 +115,30 @@ app.post('/action_page', function (req, res) {
     text: `Dear ${fullName}!
     thanks you
     ChienLVM`,
-    html: '<h1>Chữ kí của bạn</h1>',
+    html: `<h1>Thanks you ${fullName} submit heat</h1>`,
     attachments: [
       {
-        filename: 'covid-19.png',
-        path: './data/fff.png',
+        filename: `${nameFile}`,
+        path: `./data/${nameFile}`,
       },
     ],
   };
 
-  // transporter.sendMail(mailOptions, function(error, info){
-  // if (error) {
-  //   console.log(error);
-  // } else {
-  //   console.log('Email sent: ' + info.response);
-  // }
-  // });
-  res.render('pages/success');
+  console.log('co vao day ko');
+  transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+    res.redirect('pages');
+  }
+  });
+  // res.render('pages/success');
+
 });
+
+app.get('/pages', home.index);
+
+
 app.listen(port);
 console.log(`server start with port: ${port}`);
