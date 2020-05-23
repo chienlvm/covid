@@ -10,6 +10,9 @@
 <link rel="stylesheet" type="text/css" href="/static/css/view.mobile.css" media="all" />
 <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.bubble.css">
 </head>
 <body id="main_body">
 	<div id="form_container" class="">
@@ -17,34 +20,52 @@
 		<h1><a>Covid-19 form</a></h1>
 
 		<div class="form_input" id="form-submit">
-      <form action="/action_page" method="POST">
-        <label for="fullname">Full name:</label><br>
-        <input required type="text" id="fullname" name="fullname" placeholder="............."><br>
+      <form action="/action_page" method="POST" class="js-formSubmit">
 
-        <div class="form_describe">
-          <div>
-            <h2>What is Lorem Ipsum?</h2>
-            <p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <div id="scrolling-container js-quill">
+          <div id="quill-container">
+            <!--template start-->
+            <p class="js-quill_descbie_1"><strong class="js-name">Dear:...............</strong> He wondered if he was awake or still sleeping, still in the swift-moving dream in which he had been wrapped so long since the great ride began. The dark world was rushing by and the wind sang loudly in his ears. He could see nothing but the wheeling stars, and away to his right vast shadows against the sky where the mountains of the South marched past. Sleepily he tried to reckon the times and stages of their journey, but his memory was drowsy and uncertain.</p>
+            <p><br></p>
+            <p class="js-quill_descbie_2">There had been the first ride at terrible speed without a halt, and then in the dawn he had seen a pale gleam of gold, and they had come to the silent town and the great empty house on the hill. And hardly had they reached its shelter when the winged shadow had passed over once again, and men wilted with fear. But Gandalf had spoken soft words to him, and he had slept in a corner, tired but uneasy, dimly aware of comings and goings and of men talking and Gandalf giving orders. And then again riding, riding in the night. This was the second, no, the third night since he had looked in the Stone. And with that hideous memory he woke fully, and shivered, and the noise of the wind became filled with menacing voices.</p>
+            <p><br></p>
+            <p class="js-quill_descbie_3">A light kindled in the sky, a blaze of yellow fire behind dark barriers Pippin cowered back, afraid for a moment, wondering into what dreadful country Gandalf was bearing him. He rubbed his eyes, and then he saw that it was the moon rising above the eastern shadows, now almost at the full. So the night was not yet old and for hours the dark journey would go on. He stirred and spoke.</p>
+            <p><br></p>
+            <p class="js-quill_descbie_3">"Where are we, Gandalf?" he asked.</p>
+            <p><br></p>
+            <p class="js-quill_descbie_4">"In the realm of Gondor," the wizard answered. "The land of Anórien is still passing by."</p>
+            <p><br></p>
+            <div class="js-quill_descbie_4">"In the realm of Gondor," the wizard answered. "The land of Anórien is still passing by."</div>
+            <p><br></p>
+            <p class="js-quill_descbie_2">There had been the first ride at terrible speed without a halt, and then in the dawn he had seen a pale gleam of gold, and they had come to the silent town and the great empty house on the hill. And hardly had they reached its shelter when the winged shadow had passed over once again, and men wilted with fear. But Gandalf had spoken soft words to him, and he had slept in a corner, tired but uneasy, dimly aware of comings and goings and of men talking and Gandalf giving orders. And then again riding, riding in the night. This was the second, no, the third night since he had looked in the Stone. And with that hideous memory he woke fully, and shivered, and the noise of the wind became filled with menacing voices.</p>
+            <p><br></p>
+            <p class="js-quill_descbie_3">A light kindled in the sky, a blaze of yellow fire behind dark barriers Pippin cowered back, afraid for a moment, wondering into what dreadful country Gandalf was bearing him. He rubbed his eyes, and then he saw that it was the moon rising above the eastern shadows, now almost at the full. So the night was not yet old and for hours the dark journey would go on. He stirred and spoke.</p>
+            <p><br></p>
+            <p class="js-quill_descbie_3">"Where are we, Gandalf?" he asked.</p>
+            <p><br></p>
+            <p class="js-quill_descbie_4">"In the realm of Gondor," the wizard answered. "The land of Anórien is still passing by."</p>
+            <!--template end-->
+          </div>
+        </div>
+        <input type="hidden" name="content_1">
+        <input type="hidden" name="content_2">
+
+          <div class="form_signature">
+            <p>signature</p>
+            <div class="wrapper">  <canvas id="signature-pad" class="signature-pad" width="370" height="200"></canvas>
+              <input type="hidden" name="signature">
             </div>
-        </div>
-        <div class="form_email">
-          <label for="email">Email</label><br>
-          <input required type="email" id="email" name="email">
-        </div>
-        <div class="form_signature">
-          <p>signature</p>
-          <div class="wrapper">  <canvas id="signature-pad" class="signature-pad" width=370 height=200></canvas>
-            <input required type="hidden" name="signature">
+            <div>
+              <button id="clear">Clear signature</button>
+            </div>
           </div>
-          <div>
-            <button id="clear">Clear</button>
+          <div class="form_submitBtn">
+            <input type="submit" value="Submit">
+            <p>USA <%= `${new Date(Date.now()).toLocaleString().split(',')[0]}`%></p>
           </div>
-        </div>
-
-        <input type="submit" value="Submit">
       </form>
-		</div>
+    </div>
   </div>
-  <script src="/static/js/index.js"></script>
+<script src="/static/js/index.js"></script>
 </body>
 </html>

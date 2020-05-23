@@ -15,10 +15,6 @@ const home = require('./router/home');
 // pdf
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
-// base 64
-var base64 = require('base-64');
-
-var isSubmit = false;
 
 // mail
 var nodemailer = require('nodemailer');
@@ -32,7 +28,6 @@ var transporter = nodemailer.createTransport({
     pass: '123456a-',
   },
 });
-
 
 var myPrefix = '/static';
 var destination = join(__dirname, 'public');
@@ -61,58 +56,104 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
-// for API request
 
-// live
-
-
-// for server side rendering
-// home
 app.get('/', function (req, res) {
   isSubmit = true;
   res.render('pages/index');
 });
 // submit
 app.post('/action_page', function (req, res) {
-  var email = req.body.email;
-  var fullName = req.body.fullname;
+  var name = req.body.content_1;
+  var describe = req.body.content_2;
   var signature = req.body.signature;
+  const fullContent = name + describe;
+  var fullName = 'chienlm';
 
   // for pdf
-const doc = new PDFDocument(
-  {
-    size: [300, 300],
-    margins : { // by default, all are 72
+  const doc = new PDFDocument({
+    size: [595, 842],
+    margins: {
+      // by default, all are 72
       top: 10,
-      bottom:10,
+      bottom: 10,
       left: 10,
-      right: 10
-    }
-  }
-);
+      right: 10,
+    },
+  });
+
+  //  for pdf
   var buffer = Buffer.from(signature.split(',')[1] || '', 'base64');
   var date = new Date();
-  var nameFile = `form_${fullName}_${date.getFullYear()}-${date.getMonth() + 1}-${date.getDay()}_${date.getTime()}.pdf`
-  doc.pipe(fs.createWriteStream(`./data/form_${fullName}_${date.getFullYear()}-${date.getMonth() + 1}-${date.getDay()}_${date.getTime()}.pdf`));
-  doc
-    .font('./font/PALAT32.ttf')
-    .fontSize(14)
-    .text(`Thanks you ${fullName} has submitec`, 10, 100);
+  var nameFile = `form_${fullName}_${date.getFullYear()}-${
+    date.getMonth() + 1
+  }-${date.getDay()}_${date.getTime()}.pdf`;
+  doc.pipe(
+    fs.createWriteStream(
+      `./data/form_${fullName}_${date.getFullYear()}-${
+        date.getMonth() + 1
+      }-${date.getDay()}_${date.getTime()}.pdf`
+    )
+  );
 
-  doc.image(buffer, 0, 100, {
-    fit: [100, 300],
+  doc.image('img/backgroupTop.png', 0, -300, {
+    fit: [595, 842],
     align: 'center',
-    valign: 'center'
+    valign: 'center',
   });
+  var tmp = fullContent.split(/\r?\n/);
+  tmp.forEach((data, index) => {
+    if (index === 0) {
+      doc
+        .fontSize(10)
+        .font('Helvetica-Bold')
+        .text(data.slice(0, name.length), 10, 200, {
+          width: 500,
+          continued: true,
+          align: 'justify',
+          font: 'Helvetica-Bold',
+        })
+        .font('Times-Roman')
+        .text(data.slice(name.length), {
+          width: 500,
+          continued: true,
+          align: 'justify',
+        })
+        .moveDown(0.5);
+    } else {
+      doc
+        .font('Times-Roman')
+        .fontSize(10)
+        .text(data.trim(), {
+          width: 500,
+          align: 'justify',
+        })
+        .moveDown(0.5);
+    }
+  });
+  doc
+    .font('Helvetica-Bold')
+    .text(
+      `USA, ${new Date(Date.now()).toLocaleString().split(',')[0]}`,
+      100,
+      810,
+      {
+        align: 'right',
+      }
+    );
+  doc
+    .image(buffer, 10, 690, { width: 250 })
+    .rect(5, 670, 300, 170)
+    .stroke()
+    .font('Helvetica-Bold')
+    .text('Da ky', 10, 650);
   doc.end();
-
-  //  captureScreenshot();
 
   var mailOptions = {
     from: 'entrycovid19@gmail.com',
-    to: `${email}`,
-    subject: `Thanks ${fullName} health declaratio `,
-    text: `Dear ${fullName}!
+    to: `info.leeit@gmail.com`,
+    subject: `Thanks your health declaratio `,
+    text: `Dear chien!
+    ${describe}
     thanks you
     ChienLVM`,
     html: `<h1>Thanks you ${fullName} submit heat</h1>`,
@@ -124,21 +165,17 @@ const doc = new PDFDocument(
     ],
   };
 
-  console.log('co vao day ko');
-  transporter.sendMail(mailOptions, function(error, info){
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Email sent: ' + info.response);
-    res.redirect('pages');
-  }
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+      res.redirect('pages');
+    }
   });
-  // res.render('pages/success');
-
 });
 
 app.get('/pages', home.index);
-
 
 app.listen(port);
 console.log(`server start with port: ${port}`);
