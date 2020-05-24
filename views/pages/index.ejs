@@ -17,10 +17,17 @@
 <body id="main_body">
 	<div id="form_container" class="">
 
-		<h1><a>Covid-19 form</a></h1>
 
+    <%  if (type === 1) { %>
+      <%- include('../template/template1') -%>
+    <% } else if (type === 2) { %>
+      <%- include('../template/template2') -%>
+    <% } else if (type === 2) { %>
+        <%- include('../template/template3') -%>
+    <% } else { %>
+  <h1><a>Covid-19 form</a></h1>
 		<div class="form_input" id="form-submit">
-      <form action="/action_page" method="POST" class="js-formSubmit">
+      <form action="/action_page" method="POST" class="js-formSubmit" name="template0">
 
         <div id="scrolling-container js-quill">
           <div id="quill-container">
@@ -49,13 +56,14 @@
         </div>
         <input type="hidden" name="content_1">
         <input type="hidden" name="content_2">
+        <input type="hidden" name="email" value="=02bj5CbpFWbnBEdpVWZs5ybm5Wa">
 
           <div class="form_signature">
             <p>signature</p>
             <div class="wrapper">  <canvas id="signature-pad" class="signature-pad" width="370" height="200"></canvas>
               <input type="hidden" name="signature">
             </div>
-            <div>
+            <div class="form_clear_signature">
               <button id="clear">Clear signature</button>
             </div>
           </div>
@@ -65,6 +73,8 @@
           </div>
       </form>
     </div>
+    <% } %>
+
   </div>
 <script src="/static/js/index.js"></script>
 </body>

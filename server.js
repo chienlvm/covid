@@ -7,6 +7,7 @@ var port = process.env.PORT || 9999;
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 var cors = require('cors');
+var atob = require('atob');
 
 const puppeteer = require('puppeteer');
 const path = require('path');
@@ -57,16 +58,35 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
 
+// url for template 1: Zm9ybWNvdmlkXzE= => decode: formcovid1
+const form1 = "formcovid_1";
+const form2 = "formcovid_2";
+const form3 = "formcovid_3";
+// for home page
 app.get('/', function (req, res) {
-  isSubmit = true;
-  res.render('pages/index');
+  res.render('pages/index',  { type: 999 });
+});
+
+// for tempate
+app.get('/template/:template', function (req, res) {
+  var template = atob(req.params.template);
+  if (template === form1) {
+    res.render('pages/index', { type: 1 });
+  } else if (template === form2) {
+    res.render('pages/index', { type: 2 });
+  } else if (template === form3) {
+    res.render('pages/index', { type: 3 });
+  } else {
+    res.render('pages/error');
+  }
 });
 // submit
 app.post('/action_page', function (req, res) {
   var name = req.body.content_1;
   var describe = req.body.content_2;
   var signature = req.body.signature;
-  const fullContent = name + describe;
+  var fullContent = name + describe;
+  var email = req.body.email;
   var fullName = 'chienlm';
 
   // for pdf
@@ -80,13 +100,10 @@ app.post('/action_page', function (req, res) {
       right: 10,
     },
   });
-
   //  for pdf
   var buffer = Buffer.from(signature.split(',')[1] || '', 'base64');
   var date = new Date();
-  var nameFile = `form_${fullName}_${date.getFullYear()}-${
-    date.getMonth() + 1
-  }-${date.getDay()}_${date.getTime()}.pdf`;
+  var nameFile = `form_${fullName}_${date.getFullYear()}-${date.getMonth() + 1}-${date.getDay()}_${date.getTime()}.pdf`;
   doc.pipe(
     fs.createWriteStream(
       `./data/form_${fullName}_${date.getFullYear()}-${
@@ -94,7 +111,6 @@ app.post('/action_page', function (req, res) {
       }-${date.getDay()}_${date.getTime()}.pdf`
     )
   );
-
   doc.image('img/backgroupTop.png', 0, -300, {
     fit: [595, 842],
     align: 'center',
@@ -147,10 +163,12 @@ app.post('/action_page', function (req, res) {
     .font('Helvetica-Bold')
     .text('Da ky', 10, 650);
   doc.end();
+// end make pdf
 
+  // for email
   var mailOptions = {
     from: 'entrycovid19@gmail.com',
-    to: `info.leeit@gmail.com`,
+    to: `${atob(email.split("").reverse().join(""))}`,
     subject: `Thanks your health declaratio `,
     text: `Dear chien!
     ${describe}
@@ -175,7 +193,17 @@ app.post('/action_page', function (req, res) {
   });
 });
 
+// for redirect
 app.get('/pages', home.index);
+
+// for error console
+app.use(function (err, req, res, next) {
+  res.status(500).render('pages/error');
+})
+// for 404
+app.use(function(req, res, next){
+  res.status(404).render('pages/error');
+});
 
 app.listen(port);
 console.log(`server start with port: ${port}`);

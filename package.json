@@ -13,6 +13,7 @@
   "dependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
+    "atob": "^2.1.2",
     "axios": "^0.19.2",
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.1.0",

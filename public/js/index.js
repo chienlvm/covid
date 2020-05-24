@@ -25,20 +25,12 @@ var quill = new Quill('#quill-container', {
 });
 function getContentQuill() {
   var data  = quill.getContents().ops;
-  // let inputTag = data.map((item, index) => `<input type="hidden" name="content_${index}" value="${item.insert}">`).join('');
-  // let inputTagLength = `<input type="hidden" name="length" value="${data.length}">`;
-  // document.querySelectorAll('.js-formSubmit')[0].insertAdjacentHTML("beforeend", inputTagLength);
-  // console.log('xxx', quill.getContents());
-  console.log(data);
   data.map((item, index) => {
-    console.log(item);
     $(`input[name=content_${index + 1}]`).val(item.insert);
   })
-  // return document.querySelectorAll('.js-formSubmit')[0].insertAdjacentHTML("beforeend", inputTag);
 }
 $('#form-submit').submit(function (e) {
- //  e.preventDefault();
   getSignaturePad();
-  getContentQuill();// call this function here, sets the imageData right before submitting the form.
-  return true; // returning true submits the form.
+  getContentQuill();
+  return true;
 });
